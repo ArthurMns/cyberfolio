@@ -103,3 +103,18 @@ a[href*="homepage"]:hover {
 .text-center {
     text-align: center;
 }
+
+.btn-danger {
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}

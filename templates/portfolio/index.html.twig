@@ -14,6 +14,7 @@
 
     <!-- Section Projets -->
     <h2>Projets associés</h2>
+    <a href="{{ path('portfolio_add_project', {id: portfolio.id}) }}" class="btn">Ajouter un projet</a>
     {% if projects is not empty %}
         <ul>
             {% for project in projects %}
@@ -24,6 +25,11 @@
                         <a href="{{ project.url }}" target="_blank">Voir le projet</a>
                     {% endif %}
                     <small>Créé le : {{ project.createdAt|date('d/m/Y') }}</small>
+                    <!-- Bouton de suppression -->
+                    <form method="post" action="{{ path('project_delete', {id: project.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce projet ?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ project.id) }}">
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                    </form>
                 </li>
             {% endfor %}
         </ul>
@@ -32,13 +38,21 @@
     {% endif %}
 
     <!-- Section Compétences -->
-    <h2>Compétences</h2>
+    <div class="section-header">
+        <h2>Compétences</h2>
+        <a href="{{ path('portfolio_add_skill', {id: portfolio.id}) }}" class="btn">Ajouter une compétence</a>
+    </div>
     {% if skills is not empty %}
         <ul>
             {% for skill in skills %}
                 <li>
                     <h3>{{ skill.name }}</h3>
                     <p>Niveau : {{ skill.level }}</p>
+                    <!-- Bouton de suppression -->
+                    <form method="post" action="{{ path('skill_delete', {id: skill.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette compétence ?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ skill.id) }}">
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                    </form>
                 </li>
             {% endfor %}
         </ul>
@@ -47,11 +61,21 @@
     {% endif %}
 
     <!-- Section Technologies -->
-    <h2>Technologies utilisées</h2>
+    <div class="section-header">
+        <h2>Technologies utilisées</h2>
+        <a href="{{ path('portfolio_add_technology', {id: portfolio.id}) }}" class="btn">Ajouter une technologie</a>
+    </div>
     {% if technologies is not empty %}
         <ul>
             {% for technology in technologies %}
-                <li>{{ technology.name }}</li>
+                <li>
+                    {{ technology.name }}
+                    <!-- Bouton de suppression -->
+                    <form method="post" action="{{ path('technology_delete', {id: technology.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette technologie ?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ technology.id) }}">
+                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                    </form>
+                </li>
             {% endfor %}
         </ul>
     {% else %}

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/technology.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Ajouter une technologie</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.name, {
+            'label': 'Nom de la technologie',
+            'attr': {'placeholder': 'Exemple : Symfony, React, Docker'}
+        }) }}
+
+    {{ form_end(form) }}
+
+    <div class="text-center mt-4">
+        <a href="{{ path('portfolio_detail', {id: portfolio.id}) }}">Retour au portfolio</a>
+    </div>
+</div>
+{% endblock %}

@@ -10,9 +10,15 @@
 <nav class="navbar">
     <div class="navbar-container">
         <a href="{{ path('homepage') }}" class="navbar-logo">Cyberfolio</a>
+        {% if app.user %}
+            <p>Bonjour, {{ app.user.username }} !</p>
+        {% else %}
+            <p>Bienvenue, visiteur anonyme.</p>
+            <a href="{{ path('app_login') }}">Se connecter</a>
+        {% endif %}
         <ul class="navbar-menu">
             {% if app.user %}
-                <li><a href="{{ path('portfolio_detail', {id: app.user.id}) }}">Mon compte</a></li>
+                <li><a href="{{ path('app_user', {id: app.user.id}) }}">Mon compte</a></li>
                 <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
             {% else %}
                 <li><a href="{{ path('app_login') }}">Se connecter</a></li>
@@ -22,14 +28,9 @@
 </nav>
 
 <!-- Contenu principal -->
-{% if app.user %}
-    <p>Bonjour, {{ app.user.email }} !</p>
-{% else %}
-    <p>Bienvenue, visiteur anonyme.</p>
-    <a href="{{ path('app_login') }}">Se connecter</a>
-{% endif %}
 
-<h2>Binevenue sur le Portfolio de Arthur Mounissens</h2>
+
+<h2>Bienvenue sur le Portfolio de Arthur Mounissens</h2>
 {% if portfolio is not empty %}
     <ul>
         <li>

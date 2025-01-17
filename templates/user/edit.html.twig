@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/user.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Modifier mes informations</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.password) }}
+        {{ form_row(form.save) }}
+    {{ form_end(form) }}
+
+    <div class="text-center mt-4">
+        <a href="{{ path('homepage') }}">Retour à l'accueil</a>
+    </div>
+</div>
+{% endblock %}

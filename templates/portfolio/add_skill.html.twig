@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/skills.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Ajouter une compétence</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.name, {
+            'label': 'Nom de la compétence',
+            'attr': {'placeholder': 'Exemple : PHP, Design'}
+        }) }}
+
+        {{ form_row(form.level, {
+            'label': 'Niveau (1-5)',
+            'attr': {'placeholder': 'Indiquez le niveau'}
+        }) }}
+
+    {{ form_end(form) }}
+
+    <div class="text-center mt-4">
+        <a href="{{ path('portfolio_detail', {id: portfolio.id}) }}">Retour au portfolio</a>
+    </div>
+</div>
+{% endblock %}
