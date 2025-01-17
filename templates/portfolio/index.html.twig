@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/portfolio.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1>Détail du portfolio</h1>
+
+    <h2>{{ portfolio.name|default('Portfolio') }}</h2>
+    <p>{{ portfolio.description|default('Aucune description disponible.') }}</p>
+
+    <!-- Section Projets -->
+    <h2>Projets associés</h2>
+    {% if projects is not empty %}
+        <ul>
+            {% for project in projects %}
+                <li>
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.description }}</p>
+                    {% if project.url %}
+                        <a href="{{ project.url }}" target="_blank">Voir le projet</a>
+                    {% endif %}
+                    <small>Créé le : {{ project.createdAt|date('d/m/Y') }}</small>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun projet associé au portfolio.</p>
+    {% endif %}
+
+    <!-- Section Compétences -->
+    <h2>Compétences</h2>
+    {% if skills is not empty %}
+        <ul>
+            {% for skill in skills %}
+                <li>
+                    <h3>{{ skill.name }}</h3>
+                    <p>Niveau : {{ skill.level }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucune compétence associée au portfolio.</p>
+    {% endif %}
+
+    <!-- Section Technologies -->
+    <h2>Technologies utilisées</h2>
+    {% if technologies is not empty %}
+        <ul>
+            {% for technology in technologies %}
+                <li>{{ technology.name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucune technologie associée au portfolio.</p>
+    {% endif %}
+
+    <!-- Bouton de retour -->
+    <div class="text-center">
+        <a href="{{ path('homepage') }}">Retour à l'accueil</a>
+    </div>
+</div>
+
+{% endblock %}
