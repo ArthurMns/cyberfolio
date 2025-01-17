@@ -12,7 +12,8 @@ Fonctionnalité principal terminées. Il pourrait il y avoir plus d'ajustement
 
 ## Difficultés rencontrées et solutions
 
-1. Security bundle: Il faut mettre la restriction ROLE_USER à toutes les autres pages après avoir définit les autres restrictions
+1. Security bundle: Il faut mettre la restriction ROLE_USER à la racine après avoir définit les autres restrictions
+2. CSS: Le css change quand on change de page et qu'on actualise (en plus de ne pas être très joli)
 
 ## Bilan des acquis
 
