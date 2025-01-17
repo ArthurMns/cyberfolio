@@ -23,6 +23,8 @@ Fonctionnalité principal terminées. Il pourrait il y avoir plus d'ajustement
 
 ## Remarques complémentaires
 
+il faut ajouter le .env.local et remplir le login et MDP correspondant
+
 Il manque quelques fonctionnalités clés ou ajustements au projet :
 - N'importe qui peut modifier les données du portfolio
 - Le style n'est pas très développé (je déteste le css)
