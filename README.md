@@ -8,7 +8,7 @@
 
 ## État d'avancement
 
-À compléter
+Fonctionnalité principal terminées. Il pourrait il y avoir plus d'ajustement
 
 ## Difficultés rencontrées et solutions
 

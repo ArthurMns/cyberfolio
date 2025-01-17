@@ -28,6 +28,7 @@ label {
     font-size: 0.9em;
     margin-bottom: 5px;
     color: #555;
+    text-align: left;
 }
 
 input {
@@ -50,24 +51,33 @@ button {
     font-size: 1em;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    /* width: 100%; */
+    width: 100%;
 }
 
 button:hover {
     background-color: #2980b9;
 }
 
-button[type="button"] {
-    background-color: #2ecc71;
-}
-
-button[type="button"]:hover {
-    background-color: #27ae60;
-}
-
-/* Error message */
+/* Flash messages */
 div[style="color: red;"] {
     color: #e74c3c;
     font-size: 0.9em;
     margin-bottom: 10px;
+}
+
+div[style="color: green;"] {
+    color: #2ecc71;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+/* Link */
+a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
 }
