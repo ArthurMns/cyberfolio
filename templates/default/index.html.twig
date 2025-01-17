@@ -1,20 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DefaultController!{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/homePage.css') }}">
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ message }} ✅</h1>
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <a href="{{ path('homepage') }}" class="navbar-logo">Cyberfolio</a>
+        <ul class="navbar-menu">
+            {% if app.user %}
+                <li><a href="{{ path('portfolio_detail', {id: app.user.id}) }}">Mon compte</a></li>
+                <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
+            {% else %}
+                <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
 
-    This friendly message is coming from:
+<!-- Contenu principal -->
+{% if app.user %}
+    <p>Bonjour, {{ app.user.email }} !</p>
+{% else %}
+    <p>Bienvenue, visiteur anonyme.</p>
+    <a href="{{ path('app_login') }}">Se connecter</a>
+{% endif %}
+
+<h2>Binevenue sur le Portfolio de Arthur Mounissens</h2>
+{% if portfolio is not empty %}
     <ul>
-        <li>Your controller at <code>C:/wamp64/www/cyberfolio/src/Controller/DefaultController.php</code></li>
-        <li>Your template at <code>C:/wamp64/www/cyberfolio/templates/default/index.html.twig</code></li>
+        <li>
+            <h3>{{ portfolio.name|default('Prénom inconnu') }}</h3>
+            <p>{{ portfolio.description|default('Aucune biographie disponible.') }}</p>
+            <a href="{{ path('portfolio_detail', {id: portfolio.id}) }}">Voir le portfolio</a>
+        </li>
     </ul>
-</div>
+{% else %}
+    <p>Aucun profil disponible.</p>
+{% endif %}
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <p>&copy; {{ "now"|date("Y") }} Cyberfolio. Tous droits réservés.</p>
+        <p>Contactez-moi : <a href="mailto:contact@cyberfolio.com">contact@cyberfolio.com</a></p>
+        <ul class="footer-links">
+            <li><a href="#">À propos</a></li>
+            <li><a href="#">Mentions légales</a></li>
+        </ul>
+    </div>
+</footer>
+
 {% endblock %}

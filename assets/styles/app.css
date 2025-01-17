@@ -1,3 +1,8 @@
 body {
-    background-color: skyblue;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #defbff;
+    color: #333;
+    line-height: 1.6;
 }

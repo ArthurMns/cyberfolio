@@ -18,21 +18,25 @@ security:
             lazy: true
             provider: app_user_provider
             form_login:
-                login_path: app_login   # Utilisez le bon nom de route ici
-                check_path: app_login   # Même nom de route pour le chemin de vérification
+                login_path: app_login # Utilisez le bon nom de route ici
+                check_path: app_login # Même nom de route pour le chemin de vérification
             logout:
-                path: app_logout        # Correspond à la route "app_logout" dans le contrôleur
+                path: app_logout # Correspond à la route "app_logout" dans le contrôleur
             remember_me:
-                secret: '%kernel.secret%'
-#            entry_point: form_login
+                secret: "%kernel.secret%"
 
     access_control:
-#        - { path: ^/, roles: PUBLIC_ACCESS }
-#        - { path: ^/login$, roles: PUBLIC_ACCESS }
-#        - { path: ^/logout$, roles: PUBLIC_ACCESS }
-#        - { path: ^/admin, roles: ROLE_ADMIN }
-#        - { path: ^/dashboard, roles: ROLE_USER }
-#        - { path: ^/profile, roles: ROLE_USER }
-#        - { path: ^/project, roles: ROLE_USER }
+        # Routes publiques
+        - { path: ^/login, roles: PUBLIC_ACCESS }
+        - { path: ^/logout, roles: PUBLIC_ACCESS }
+        - { path: ^/register, roles: PUBLIC_ACCESS }
+
+        # Routes spécifiques pour les utilisateurs connectés
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/dashboard, roles: ROLE_USER }
+        - { path: ^/portfolio, roles: ROLE_USER }
+        - { path: ^/project, roles: ROLE_USER }
         - { path: ^/user, roles: ROLE_USER }
 
+        # Applique la restriction ROLE_USER à toutes les autres pages A DEFINIR APRES LE RESTE
+        - { path: ^/, roles: ROLE_USER }
