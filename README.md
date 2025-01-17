@@ -2,7 +2,7 @@
 
 ## Compte administrateur
 
-- URL du *back-office* : `Pas de dashboard implémenté`
+- URL du *back-office* : `localhost:8000`
 - Identifiant : `arthur.mounissens@gmail.com`
 - Mot de passe : `1234`
 
